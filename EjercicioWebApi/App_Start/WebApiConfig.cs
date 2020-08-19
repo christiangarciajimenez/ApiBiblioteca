@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EjercicioWebApi.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -16,7 +17,7 @@ namespace EjercicioWebApi
             config.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
 
             // Configuración y servicios de API web
-
+            config.MessageHandlers.Add(new TokenValidationHandler());
             // Rutas de API web
             config.MapHttpAttributeRoutes();
 

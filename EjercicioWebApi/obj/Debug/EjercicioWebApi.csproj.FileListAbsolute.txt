@@ -90,3 +90,11 @@ C:\Users\christian\Source\repos\EjercicioWebApi\EjercicioWebApi\obj\Debug\Ejerci
 C:\Users\christian\Source\repos\EjercicioWebApi\EjercicioWebApi\obj\Debug\EjercicioWebApi.dll
 C:\Users\christian\Source\repos\EjercicioWebApi\EjercicioWebApi\obj\Debug\EjercicioWebApi.pdb
 C:\Users\christian\Source\repos\EjercicioWebApi\EjercicioWebApi\obj\Debug\EjercicioWebApi.csprojAssemblyReference.cache
+C:\Users\christian\Source\repos\EjercicioWebApi\EjercicioWebApi\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\christian\Source\repos\EjercicioWebApi\EjercicioWebApi\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\christian\Source\repos\EjercicioWebApi\EjercicioWebApi\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\christian\Source\repos\EjercicioWebApi\EjercicioWebApi\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\christian\Source\repos\EjercicioWebApi\EjercicioWebApi\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\christian\Source\repos\EjercicioWebApi\EjercicioWebApi\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\christian\Source\repos\EjercicioWebApi\EjercicioWebApi\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\christian\Source\repos\EjercicioWebApi\EjercicioWebApi\bin\System.IdentityModel.Tokens.Jwt.xml
