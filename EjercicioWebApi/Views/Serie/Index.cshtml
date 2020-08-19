@@ -1,0 +1,105 @@
+﻿@using Servicios
+
+@model IEnumerable<SerieTVBiblioteca>
+
+@{
+    ViewBag.Title = "Listado Series TV";
+}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.14.2/bootstrap-table.min.css" />
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/3.4.1/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-S0cN63+vYrG1/kfcUhtXsKZfyE9azrjw5p+Q5yYU+Dzjg60sZUEYsIKIb5O/oaT3" crossorigin="anonymous">
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.14.2/bootstrap-table.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+<h2>Listado de series TV</h2>
+
+<p>
+    @Html.ActionLink("Nueva Serie TV", "Create")
+</p>
+
+@using (Html.BeginForm("SearchByGenre", "Serie", FormMethod.Post, htmlAttributes: new { @class = "text-right" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <label for="Genre">Buscar por género: </label>
+        <input type="text" id="Genre" name="Genre" />
+        <input type="submit" value="Buscar" class="btn btn-primary" />
+    </div>
+
+}
+<table class="table">
+    <tr>
+        <th>
+            Título
+        </th>
+        <th>
+            Año
+        </th>
+        <th>
+            Género
+        </th>
+        <th>
+            Director
+        </th>
+        <th>
+            Reparto
+        </th>
+        <th>
+            Temporadas
+        </th>
+        <th>
+            Capítulos
+        </th>
+        <th>
+            Canal
+        </th>
+        <th>
+            Alquilado
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ObraDeVideoBiblioteca.ObraCulturalBiblioteca.TituloObra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ObraDeVideoBiblioteca.ObraCulturalBiblioteca.AnyoObra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ObraDeVideoBiblioteca.ObraCulturalBiblioteca.GeneroObra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ObraDeVideoBiblioteca.DirectorObra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ObraDeVideoBiblioteca.RepartoObra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TemporadasObra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CapitulosObra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CanalObra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ObraDeVideoBiblioteca.ObraCulturalBiblioteca.AlquiladoObra)
+            </td>
+            <td>
+                @Html.ActionLink("Modificar", "Edit", new { id = item.ObraDeVideoBiblioteca.ObraCulturalBiblioteca.IdObra }) |
+                @Html.ActionLink("Mostrar Detalles", "Details", new { id = item.ObraDeVideoBiblioteca.ObraCulturalBiblioteca.IdObra }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.ObraDeVideoBiblioteca.ObraCulturalBiblioteca.IdObra })
+            </td>
+        </tr>
+    }
+
+</table>

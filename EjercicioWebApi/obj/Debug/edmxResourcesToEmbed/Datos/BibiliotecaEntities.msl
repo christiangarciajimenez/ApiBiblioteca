@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BibliotecaModelStoreContainer" CdmEntityContainer="BibliotecaEntities">
+    <EntitySetMapping Name="ComicBiblioteca">
+      <EntityTypeMapping TypeName="BibliotecaModel.ComicBiblioteca">
+        <MappingFragment StoreEntitySet="ComicBiblioteca">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdObra" ColumnName="IdObra" />
+          <ScalarProperty Name="EditoraObra" ColumnName="EditoraObra" />
+          <ScalarProperty Name="NumeroVolumenesObra" ColumnName="NumeroVolumenesObra" />
+          <ScalarProperty Name="CapitulosObra" ColumnName="CapitulosObra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LibroBiblioteca">
+      <EntityTypeMapping TypeName="BibliotecaModel.LibroBiblioteca">
+        <MappingFragment StoreEntitySet="LibroBiblioteca">
+          <ScalarProperty Name="IdLibro" ColumnName="IdLibro" />
+          <ScalarProperty Name="IdObra" ColumnName="IdObra" />
+          <ScalarProperty Name="PaginasObra" ColumnName="PaginasObra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ObraCulturalBiblioteca">
+      <EntityTypeMapping TypeName="BibliotecaModel.ObraCulturalBiblioteca">
+        <MappingFragment StoreEntitySet="ObraCulturalBiblioteca">
+          <ScalarProperty Name="IdObra" ColumnName="IdObra" />
+          <ScalarProperty Name="TituloObra" ColumnName="TituloObra" />
+          <ScalarProperty Name="AnyoObra" ColumnName="AnyoObra" />
+          <ScalarProperty Name="GeneroObra" ColumnName="GeneroObra" />
+          <ScalarProperty Name="AlquiladoObra" ColumnName="AlquiladoObra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ObraDeVideoBiblioteca">
+      <EntityTypeMapping TypeName="BibliotecaModel.ObraDeVideoBiblioteca">
+        <MappingFragment StoreEntitySet="ObraDeVideoBiblioteca">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdObra" ColumnName="IdObra" />
+          <ScalarProperty Name="DirectorObra" ColumnName="DirectorObra" />
+          <ScalarProperty Name="RepartoObra" ColumnName="RepartoObra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ObraLiterariaBiblioteca">
+      <EntityTypeMapping TypeName="BibliotecaModel.ObraLiterariaBiblioteca">
+        <MappingFragment StoreEntitySet="ObraLiterariaBiblioteca">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdObra" ColumnName="IdObra" />
+          <ScalarProperty Name="AutorObra" ColumnName="AutorObra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PeliculaBiblioteca">
+      <EntityTypeMapping TypeName="BibliotecaModel.PeliculaBiblioteca">
+        <MappingFragment StoreEntitySet="PeliculaBiblioteca">
+          <ScalarProperty Name="IdPelicula" ColumnName="IdPelicula" />
+          <ScalarProperty Name="IdObra" ColumnName="IdObra" />
+          <ScalarProperty Name="DuracionObra" ColumnName="DuracionObra" />
+          <ScalarProperty Name="ProductoraObra" ColumnName="ProductoraObra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SerieTVBiblioteca">
+      <EntityTypeMapping TypeName="BibliotecaModel.SerieTVBiblioteca">
+        <MappingFragment StoreEntitySet="SerieTVBiblioteca">
+          <ScalarProperty Name="IdSerie" ColumnName="IdSerie" />
+          <ScalarProperty Name="IdObra" ColumnName="IdObra" />
+          <ScalarProperty Name="TemporadasObra" ColumnName="TemporadasObra" />
+          <ScalarProperty Name="CapitulosObra" ColumnName="CapitulosObra" />
+          <ScalarProperty Name="CanalObra" ColumnName="CanalObra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

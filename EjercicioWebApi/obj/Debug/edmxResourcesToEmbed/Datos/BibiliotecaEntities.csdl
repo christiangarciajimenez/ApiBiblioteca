@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BibliotecaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ComicBiblioteca">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdObra" Type="Int64" Nullable="false" />
+    <Property Name="EditoraObra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroVolumenesObra" Type="Int64" Nullable="false" />
+    <Property Name="CapitulosObra" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="ObraLiterariaBiblioteca" Relationship="Self.FK_Comic_ObraLiteraria" FromRole="ComicBiblioteca" ToRole="ObraLiterariaBiblioteca" />
+  </EntityType>
+  <EntityType Name="LibroBiblioteca">
+    <Key>
+      <PropertyRef Name="IdLibro" />
+    </Key>
+    <Property Name="IdLibro" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdObra" Type="Int64" Nullable="false" />
+    <Property Name="PaginasObra" Type="Int64" />
+    <NavigationProperty Name="ObraLiterariaBiblioteca" Relationship="Self.FK_Libro_ObraLiteraria" FromRole="LibroBiblioteca" ToRole="ObraLiterariaBiblioteca" />
+  </EntityType>
+  <EntityType Name="ObraCulturalBiblioteca">
+    <Key>
+      <PropertyRef Name="IdObra" />
+    </Key>
+    <Property Name="IdObra" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TituloObra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AnyoObra" Type="Int64" />
+    <Property Name="GeneroObra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AlquiladoObra" Type="Boolean" />
+    <NavigationProperty Name="ObraDeVideoBiblioteca" Relationship="Self.FK_ObraDeVideo_ObraCultural" FromRole="ObraCulturalBiblioteca" ToRole="ObraDeVideoBiblioteca" />
+    <NavigationProperty Name="ObraLiterariaBiblioteca" Relationship="Self.FK_ObraLiteraria_ObraCultural" FromRole="ObraCulturalBiblioteca" ToRole="ObraLiterariaBiblioteca" />
+  </EntityType>
+  <EntityType Name="ObraDeVideoBiblioteca">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdObra" Type="Int64" Nullable="false" />
+    <Property Name="DirectorObra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RepartoObra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ObraCulturalBiblioteca" Relationship="Self.FK_ObraDeVideo_ObraCultural" FromRole="ObraDeVideoBiblioteca" ToRole="ObraCulturalBiblioteca" />
+    <NavigationProperty Name="PeliculaBiblioteca" Relationship="Self.FK_Pelicula_ObraDeVideo" FromRole="ObraDeVideoBiblioteca" ToRole="PeliculaBiblioteca" />
+    <NavigationProperty Name="SerieTVBiblioteca" Relationship="Self.FK_SerieTV_ObraDeVideo" FromRole="ObraDeVideoBiblioteca" ToRole="SerieTVBiblioteca" />
+  </EntityType>
+  <EntityType Name="ObraLiterariaBiblioteca">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdObra" Type="Int64" Nullable="false" />
+    <Property Name="AutorObra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ComicBiblioteca" Relationship="Self.FK_Comic_ObraLiteraria" FromRole="ObraLiterariaBiblioteca" ToRole="ComicBiblioteca" />
+    <NavigationProperty Name="LibroBiblioteca" Relationship="Self.FK_Libro_ObraLiteraria" FromRole="ObraLiterariaBiblioteca" ToRole="LibroBiblioteca" />
+    <NavigationProperty Name="ObraCulturalBiblioteca" Relationship="Self.FK_ObraLiteraria_ObraCultural" FromRole="ObraLiterariaBiblioteca" ToRole="ObraCulturalBiblioteca" />
+  </EntityType>
+  <EntityType Name="PeliculaBiblioteca">
+    <Key>
+      <PropertyRef Name="IdPelicula" />
+    </Key>
+    <Property Name="IdPelicula" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdObra" Type="Int64" Nullable="false" />
+    <Property Name="DuracionObra" Type="Int64" />
+    <Property Name="ProductoraObra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ObraDeVideoBiblioteca" Relationship="Self.FK_Pelicula_ObraDeVideo" FromRole="PeliculaBiblioteca" ToRole="ObraDeVideoBiblioteca" />
+  </EntityType>
+  <EntityType Name="SerieTVBiblioteca">
+    <Key>
+      <PropertyRef Name="IdSerie" />
+    </Key>
+    <Property Name="IdSerie" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdObra" Type="Int64" Nullable="false" />
+    <Property Name="TemporadasObra" Type="Int64" />
+    <Property Name="CapitulosObra" Type="Int64" />
+    <Property Name="CanalObra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ObraDeVideoBiblioteca" Relationship="Self.FK_SerieTV_ObraDeVideo" FromRole="SerieTVBiblioteca" ToRole="ObraDeVideoBiblioteca" />
+  </EntityType>
+  <Association Name="FK_Comic_ObraLiteraria">
+    <End Role="ObraLiterariaBiblioteca" Type="Self.ObraLiterariaBiblioteca" Multiplicity="1" />
+    <End Role="ComicBiblioteca" Type="Self.ComicBiblioteca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ObraLiterariaBiblioteca">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ComicBiblioteca">
+        <PropertyRef Name="IdObra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Libro_ObraLiteraria">
+    <End Role="ObraLiterariaBiblioteca" Type="Self.ObraLiterariaBiblioteca" Multiplicity="1" />
+    <End Role="LibroBiblioteca" Type="Self.LibroBiblioteca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ObraLiterariaBiblioteca">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LibroBiblioteca">
+        <PropertyRef Name="IdObra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ObraDeVideo_ObraCultural">
+    <End Role="ObraCulturalBiblioteca" Type="Self.ObraCulturalBiblioteca" Multiplicity="1" />
+    <End Role="ObraDeVideoBiblioteca" Type="Self.ObraDeVideoBiblioteca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ObraCulturalBiblioteca">
+        <PropertyRef Name="IdObra" />
+      </Principal>
+      <Dependent Role="ObraDeVideoBiblioteca">
+        <PropertyRef Name="IdObra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ObraLiteraria_ObraCultural">
+    <End Role="ObraCulturalBiblioteca" Type="Self.ObraCulturalBiblioteca" Multiplicity="1" />
+    <End Role="ObraLiterariaBiblioteca" Type="Self.ObraLiterariaBiblioteca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ObraCulturalBiblioteca">
+        <PropertyRef Name="IdObra" />
+      </Principal>
+      <Dependent Role="ObraLiterariaBiblioteca">
+        <PropertyRef Name="IdObra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pelicula_ObraDeVideo">
+    <End Role="ObraDeVideoBiblioteca" Type="Self.ObraDeVideoBiblioteca" Multiplicity="1" />
+    <End Role="PeliculaBiblioteca" Type="Self.PeliculaBiblioteca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ObraDeVideoBiblioteca">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PeliculaBiblioteca">
+        <PropertyRef Name="IdObra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SerieTV_ObraDeVideo">
+    <End Role="ObraDeVideoBiblioteca" Type="Self.ObraDeVideoBiblioteca" Multiplicity="1" />
+    <End Role="SerieTVBiblioteca" Type="Self.SerieTVBiblioteca" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ObraDeVideoBiblioteca">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SerieTVBiblioteca">
+        <PropertyRef Name="IdObra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BibliotecaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ComicBiblioteca" EntityType="Self.ComicBiblioteca" />
+    <EntitySet Name="LibroBiblioteca" EntityType="Self.LibroBiblioteca" />
+    <EntitySet Name="ObraCulturalBiblioteca" EntityType="Self.ObraCulturalBiblioteca" />
+    <EntitySet Name="ObraDeVideoBiblioteca" EntityType="Self.ObraDeVideoBiblioteca" />
+    <EntitySet Name="ObraLiterariaBiblioteca" EntityType="Self.ObraLiterariaBiblioteca" />
+    <EntitySet Name="PeliculaBiblioteca" EntityType="Self.PeliculaBiblioteca" />
+    <EntitySet Name="SerieTVBiblioteca" EntityType="Self.SerieTVBiblioteca" />
+    <AssociationSet Name="FK_Comic_ObraLiteraria" Association="Self.FK_Comic_ObraLiteraria">
+      <End Role="ObraLiterariaBiblioteca" EntitySet="ObraLiterariaBiblioteca" />
+      <End Role="ComicBiblioteca" EntitySet="ComicBiblioteca" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Libro_ObraLiteraria" Association="Self.FK_Libro_ObraLiteraria">
+      <End Role="ObraLiterariaBiblioteca" EntitySet="ObraLiterariaBiblioteca" />
+      <End Role="LibroBiblioteca" EntitySet="LibroBiblioteca" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ObraDeVideo_ObraCultural" Association="Self.FK_ObraDeVideo_ObraCultural">
+      <End Role="ObraCulturalBiblioteca" EntitySet="ObraCulturalBiblioteca" />
+      <End Role="ObraDeVideoBiblioteca" EntitySet="ObraDeVideoBiblioteca" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ObraLiteraria_ObraCultural" Association="Self.FK_ObraLiteraria_ObraCultural">
+      <End Role="ObraCulturalBiblioteca" EntitySet="ObraCulturalBiblioteca" />
+      <End Role="ObraLiterariaBiblioteca" EntitySet="ObraLiterariaBiblioteca" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pelicula_ObraDeVideo" Association="Self.FK_Pelicula_ObraDeVideo">
+      <End Role="ObraDeVideoBiblioteca" EntitySet="ObraDeVideoBiblioteca" />
+      <End Role="PeliculaBiblioteca" EntitySet="PeliculaBiblioteca" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SerieTV_ObraDeVideo" Association="Self.FK_SerieTV_ObraDeVideo">
+      <End Role="ObraDeVideoBiblioteca" EntitySet="ObraDeVideoBiblioteca" />
+      <End Role="SerieTVBiblioteca" EntitySet="SerieTVBiblioteca" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
