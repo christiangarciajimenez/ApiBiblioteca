@@ -12,6 +12,7 @@ using EjercicioWebApi.Datos;
 
 namespace EjercicioWebApi.Controllers
 {
+    [Authorize]
     public class PeliculaApiController : ApiController
     {
         private BibliotecaEntities db = new BibliotecaEntities();
